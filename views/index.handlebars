@@ -1,0 +1,52 @@
+<div class="jumbotron">
+  <div class="container">
+    <h1>Let's Scrape</h1>
+    <br>
+    <h4>Click scrape to get started!</h4>
+    
+    <hr>
+    <div class="row">
+      }
+      <div class="col-md-4">
+        <button id="scrape-btn" class="btn btn-primary">Scrape</button>
+        <hr>
+        <p>Hit scrape to pull headlines and links from CNN health. Make sure you don't hit scrape without clearing the current set of unsaved articles. You'll create duplicates.
+        </p>
+
+      </div>
+      <div class="col-md-4">
+        <button class="btn btn-danger" id="clear-btn">Clear</button>
+        <hr>
+        <p>This button will clear all your current scrapes. Make sure you save those you want!</p>
+
+      </div>
+      <div class="col-md-4">
+        <a href="/saved" class="btn btn-info">View Saved</a>
+        <hr>
+        <p>This button allows you to add comments to your saved articles.</p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container" id="article-container">
+  {{#each articles}}
+  <div>
+    <p><a target="_blank" href={{this.link}}>{{this.title}}</a></p>
+    <p>
+      {{#if this.saved}}
+      <button class="btn btn-danger unsave-button" value={{this._id}}>
+        Unsave!
+      </button>
+      {{/if}}
+      {{#unless this.saved}}
+      <button class="btn btn-info save-button" value={{this._id}}>
+        Save!
+      </button>
+      {{/unless}}
+    </p>
+    <hr>
+  </div>
+  {{/each}}
+</div>
+<script src="../public/home.js">
+</script>
