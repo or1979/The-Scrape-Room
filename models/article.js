@@ -1,21 +1,42 @@
 const mongoose = require("mongoose");
-const ArticleSchema = new mongoose.Schema({
-  title: {
-    type: String,
-    required: true
-  },
-  link: {
-    type: String,
-    required: true
-  },
-  saved: {
-    type: Boolean,
-    required: true,
-    default: false
-  },
-  comment: [{
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Comment"
-  }]
+const Schema = mongoose.Schema;
+
+const Articleschema = new Schema({
+	title: {
+		type: String,
+		required: true,
+	},
+	link: {
+		type: String,
+		required: true,
+	},
+	summary: {
+		type: String,
+		default: "Summary unavailable."
+	},
+	img: {
+		type: String,
+		// default: "/assets/images/unavailable.jpg"
+	},
+	issaved: {
+		type: Boolean,
+		default: false
+	},
+	status: {
+		type: String,
+		default: "Save Article"
+	},
+	created: {
+		type: Date,
+		default: Date.now
+	},
+	note: {
+		type: Schema.Types.ObjectId,
+		ref: "Note"
+	}
 });
-module.exports = mongoose.model("Article", ArticleSchema);
+
+Articleschema.index({title: "text"});
+
+const Article  = mongoose.model("Article", Articleschema);
+module.exports = Article;

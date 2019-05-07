@@ -1,49 +1,13 @@
-<div class="jumbotron">
-  <div class="container">
-    <h1>Let's Scrape</h1>
-    <h4>Saved Articles</h4>
-    <div class="row">
-      
-        <a href="/" class="btn btn-primary">Home</a>
-      
-    </div>
-  </div>
+{{#each saved}}
+<div class="story-body" id={{this._id}}>
+<h2>
+<a href="{{this.link}}" target="_blank">{{this.title}}</a>
+<form action="/save/{{this._id}}" method="POST">
+<button type="submit" class="status" value="{{this.status}}">{{this.status}}</button>
+<button type="button" class="addnote-button" value="{{this._id}}">Edit Note</button>
+</form>
+</h2>
+<summary>{{this.summary}}</summary>
+<img class="media" src="{{this.img}}">
 </div>
-<div class="container">
-  {{#each articles}}
-  <div class="row">
-    
-    <div class="col-md-6" data-id={{this._id}} id={{this._id}}>
-      <p>
-        <a target="_blank" data-id={{this._id}} class="article-title-link" href={{this.link}}>
-          {{this.title}}
-        </a>
-      </p>
-    </div>
-
-    <div class="col-md-6">
-      <form class="comment-form">
-        <div class="input-group mb-3">
-          <div class="input-group-prepend">
-            <span class="input-group-text">Title: </span>
-          </div>
-          <input type="text" class="form-control title-area">
-        </div>
-        <div class="input-group">
-          <div class="input-group-prepend">
-            <span class="input-group-text">Your comment:</span>
-          </div>
-          <textarea class="form-control comment-area"></textarea>
-        </div>
-        <br>
-        <button type="submit" data-val={{this._id}}>Submit!</button>
-        <hr>
-      </form>
-    </div>
-    <hr>
-
-  </div>
-  {{/each}}
-</div>
-<script src="../public/saved.js">
-</script>
+{{/each}}
