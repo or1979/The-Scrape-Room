@@ -1,48 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-		<link rel="stylesheet" href="/assets/css/style.css" type="text/css" />
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-		<title>The Scrape Room</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>O's News Scraper</title>
+
+    {{!-- Bootstrap CSS --}}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    {{!-- CSS --}}
+    <link rel="stylesheet" href="/styles/style.css">
+
 </head>
-
 <body>
-	<header>
-		<a href="/"><div id="sitename">Room Scraper</div></a>
-		<a href="/"><button id="all-articles">All Articles</button></a>
-		<a href="/saved"><button id="saved-articles">Saved Articles</button></a>
-		<form action="/scrape" method="GET">
-			<button type="submit" id="refresh-articles">Scrape For Newest Articles in CNN Entertainment</button>
-		</form>
-		<form action="/search" method="POST">
-			<button type="submit" id="search-submit">Submit</button>
-			<input type="text" name="search" placeholder="Search for articles" id="search-input">
-		</form>
-	</header>
-	<img id="cover" src="/assets/images/cover.jpg" height="500px">
-	<div id="container">
-		{{{ body }}}
-	</div>
-	
-	<script src="/assets/javascript/app.js"></script>
+    <nav class="navbar navbar-expand-lg navbar-light bg-primary">
+        <a class="navbar-brand text-white" href="/">Room Scraper</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link text-white" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="/saved">Saved Articles</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/scrape"><button type="button" class="btn btn-success ml-3">Scrape New Articles</button></a>
+                </li>
+                <li class="nav-item">
+                    <a href="/clear"><button type="button" class="btn btn-success ml-3">Clear Articles</button></a>
+                </li>
+            </ul>
+        </div>
+    </nav>
 
-	<div id="addnote">
-		<div id="note-displayer">
-			<h2>Note</h2>
-			<h3>Article: <span id="article-title"></span></h3>
-			<div id="note">
-				<label for="note-title">Title</label><br>
-				<input type="text" placeholder="Title" name="title" id="note-title"><br>
-				<label for="note-body">Note</label><br>
-				<textarea rows="7" placeholder="Note" id="note-body"></textarea><br>
-				<button type="submit" id="add-note">Save Note</button>
-				<button type="button" id="close-note">Cancel</button>
-			</div>
-		</div>
-	</div>
-	
-	<footer>© Copyright Rupali Meshram</footer>
-	<script src="./assets/js/app.js"></script>
+    <div class="bg">
+        {{{ body }}}
+    </div>
+
+    {{!-- Bootstrap jQuery --}}
+    <script src="https://code.jquery.com/jquery-3.4.0.js" integrity="sha256-DYZMCC8HTC+QDr5QNaIcfR7VSPtcISykd+6eSmBW5qo="
+    crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+    
+    <script src="/js/app.js"></script>
 </body>
 </html>
